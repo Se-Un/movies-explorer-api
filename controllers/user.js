@@ -41,6 +41,9 @@ const patchUser = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((error) => {
+      if (error.code === 11000) {
+        next(new Conflict('Данный email зарегистрирован другим пользователем'));
+      }
       if (error.name === 'ValidationError') {
         next(new BadRequest('Переданы неверные данные пользователя'));
       } else {

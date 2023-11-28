@@ -4,7 +4,7 @@
   "description": "This is backend, part  my diploma work",
   "main": "app.js",
   "scripts": {
-    "eslint": "npx eslint",
+    "lint": "npx eslint .",
     "dev": "nodemon app.js",
     "start": "node app.js"
   },

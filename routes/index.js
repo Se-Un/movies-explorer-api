@@ -9,14 +9,16 @@ const movieRouters = require('./movie');
 const { createUser, loginUser, logoutUser } = require('../controllers/user');
 // импорт мидлвара авторизации
 const auth = require('../middlewares/auth');
+// импорт модуля валидации
+const { validationCreateUser, validationLogin } = require('../middlewares/validation');
 // импорт класса ошибок
 const NotFound = require('../errors/NotFound');
 //  использовать парсинг
 router.use(express.json());
 router.use(cookieParser());
 // запуск роутов
-router.post('/signup', createUser);
-router.post('/signin', loginUser);
+router.post('/signup', validationCreateUser, createUser);
+router.post('/signin', validationLogin, loginUser);
 router.use(auth);
 router.use('/users', userRouters);
 router.use('/movies', movieRouters);
