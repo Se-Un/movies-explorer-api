@@ -1,6 +1,6 @@
 // импорт зависимостей
 const router = require('express').Router();
-const bodyParser = require('body-parser');
+const express = require('express');
 const cookieParser = require('cookie-parser');
 // импорт роутов
 const userRouters = require('./user');
@@ -12,7 +12,7 @@ const auth = require('../middlewares/auth');
 // импорт класса ошибок
 const NotFound = require('../errors/NotFound');
 //  использовать парсинг
-router.use(bodyParser.json());
+router.use(express.json());
 router.use(cookieParser());
 // запуск роутов
 router.post('/signup', createUser);
