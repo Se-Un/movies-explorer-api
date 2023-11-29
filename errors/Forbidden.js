@@ -1,0 +1,9 @@
+//  класс ошибки - запрещено
+class Forbidden extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = 403;
+  }
+}
+// экспорт класса ошибки
+module.exports = Forbidden;
